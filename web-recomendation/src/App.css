@@ -1,0 +1,9 @@
+.text-link {
+  color: inherit;
+  text-decoration: inherit;
+  flex-wrap: nowrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
