@@ -1,8 +1,9 @@
+import React from "react";
 import { AppBar, Toolbar, Typography } from "@mui/material";
 import BookIcon from "@mui/icons-material/Book";
 import { Link } from "react-router-dom";
 
-function Header() {
+const Header: React.FC = () => {
   return (
     <AppBar position="static" sx={{ width: "100%", padding: "10px" }}>
       <Toolbar>
@@ -23,6 +24,6 @@ function Header() {
       </Toolbar>
     </AppBar>
   );
-}
+};
 
 export default Header;

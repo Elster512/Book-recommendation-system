@@ -7,4 +7,5 @@ export type Book = {
   imageUrlS: string;
   publisher: string;
   yearOfPublication: number;
+  bookRating: number;
 };

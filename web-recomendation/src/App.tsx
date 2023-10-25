@@ -1,9 +1,10 @@
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Layout from "./components/Layout";
 import Home from "./pages/Home/Home";
 
-function App() {
+const App: React.FC = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
@@ -12,6 +13,6 @@ function App() {
       </Route>
     </Routes>
   );
-}
+};
 
 export default App;

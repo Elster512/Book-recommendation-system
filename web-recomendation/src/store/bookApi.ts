@@ -8,18 +8,12 @@ export const booksApi = createApi({
   }),
   tagTypes: ["Books"],
   endpoints: (builder) => ({
-    getBooks: builder.query<Book[], string>({
+    getBooks: builder.query<
+      { books: Book[]; pages: number; page: number },
+      string
+    >({
       query: (page) => `books?${page && `page=${page}`}`,
-      providesTags: (result) =>
-        result
-          ? [
-              ...result.map(({ ISBN }) => ({
-                type: "Books" as const,
-                id: ISBN,
-              })),
-              { type: "Books", id: "LIST" },
-            ]
-          : [{ type: "Books", id: "LIST" }],
+      providesTags: () => ["Books"],
     }),
   }),
 });
