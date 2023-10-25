@@ -91,7 +91,12 @@ const BookCard: React.FC<IBookProps> = ({ book }) => {
             <Typography variant="subtitle1" sx={{ wordBreak: "break-word" }}>
               {book.bookAuthor}
             </Typography>
-            <Rating name="read-only" value={book.bookRating} readOnly />
+            <Rating
+              name="read-only"
+              value={book.bookRating}
+              readOnly
+              precision={0.5}
+            />
           </CardContent>
         </Card>
       </Link>
