@@ -6,6 +6,7 @@ import {
   CardContent,
   Typography,
   Rating,
+  Tooltip,
 } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import { Book } from "../types/bookcard";
@@ -38,6 +39,7 @@ const BookCard: React.FC<IBookProps> = ({ book }) => {
           <CardMedia
             component="img"
             sx={{
+              objectFit: "contain",
               height: "290px",
               maxWidth: "200px",
               minWidth: "200px",
@@ -53,19 +55,39 @@ const BookCard: React.FC<IBookProps> = ({ book }) => {
               width: "200px",
             }}
           >
-            <Typography
-              variant="h6"
-              sx={{
-                wordWrap: "normal",
-                overflow: "hidden",
-                textOverflow: "ellipsis",
-                display: "-webkit-box",
-                WebkitLineClamp: "4",
-                WebkitBoxOrient: "vertical",
+            <Tooltip
+              title={book.bookTitle}
+              placement="top"
+              componentsProps={{
+                arrow: {
+                  sx: {
+                    color: "gray",
+                  },
+                },
+
+                tooltip: {
+                  sx: {
+                    background: "gray",
+                    color: "white",
+                  },
+                },
               }}
+              arrow
             >
-              {book.bookTitle}
-            </Typography>
+              <Typography
+                variant="h6"
+                sx={{
+                  wordWrap: "normal",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  display: "-webkit-box",
+                  WebkitLineClamp: "4",
+                  WebkitBoxOrient: "vertical",
+                }}
+              >
+                {book.bookTitle}
+              </Typography>
+            </Tooltip>
             <Typography variant="subtitle1" sx={{ wordBreak: "break-word" }}>
               {book.bookAuthor}
             </Typography>
