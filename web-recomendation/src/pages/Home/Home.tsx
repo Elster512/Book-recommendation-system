@@ -22,7 +22,7 @@ const Home: React.FC = () => {
       const page = 1;
       setSearchParams({ page: page.toString() });
     }
-  }, []);
+  });
   if (isError) {
     setSearchParams({ page: "1" });
   }
