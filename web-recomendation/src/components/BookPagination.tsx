@@ -31,7 +31,7 @@ const BookPagination: React.FC<IBookPaginationProps> = ({ pages, page }) => {
                 backgroundColor: Colors.selected,
               },
               '&.Mui-selected:hover': {
-                backgroundColor: Colors.selected,
+                backgroundColor: Colors.hover,
               },
               '&.Mui-selected': {
                 backgroundColor: Colors.hover,
