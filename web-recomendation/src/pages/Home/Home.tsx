@@ -12,13 +12,13 @@ import BooksList from '../../components/BooksList';
 
 const Home: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
+
   const {
     data: books,
-    isError,
-    isLoading: loadBooks,
-    isFetching: fetchbooks,
+    isError: bookError,
+    isFetching: fetchingBooks,
+    isLoading: loadingBooks,
   } = useGetBooksQuery(searchParams.get('page') || '1');
-  console.log(fetchbooks);
 
   useEffect(() => {
     const pageParam = searchParams.get('page');
@@ -27,13 +27,23 @@ const Home: React.FC = () => {
       setSearchParams({ page: page.toString() });
     }
   });
-  if (isError) {
+  if (bookError) {
     setSearchParams({ page: '1' });
   }
-  if (loadBooks) {
-    return <Loader />;
+  if (loadingBooks) {
+    return (
+      <Container
+        maxWidth={false}
+        sx={{
+          position: 'absolute',
+          top: '50%',
+          transform: 'translate(0,-50%)',
+        }}
+      >
+        <Loader />
+      </Container>
+    );
   }
-
   return (
     <Box>
       <Container
@@ -42,12 +52,12 @@ const Home: React.FC = () => {
           mt: '50px',
           maxWidth: '1600px',
           minHeight: '400px',
-          position: 'relative',
+          height: '100%',
         }}
       >
         <Reccomendations />
-        {fetchbooks && <Loader />}
-        {!fetchbooks && books?.books && <BooksList books={books?.books} />}
+        {fetchingBooks && <Loader />}
+        {!fetchingBooks && books?.books && <BooksList books={books?.books} />}
       </Container>
       <BookPagination
         pages={books?.pages as number}

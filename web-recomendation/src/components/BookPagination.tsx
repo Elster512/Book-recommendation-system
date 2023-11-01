@@ -22,13 +22,13 @@ const BookPagination: React.FC<IBookPaginationProps> = ({ pages, page }) => {
     >
       <Pagination
         size="large"
-        page={page}
+        page={page || 1}
         count={pages}
         renderItem={(item) => (
           <PaginationItem
             sx={{
               '&:active': {
-                backgroundColor: Colors.selected,
+                backgroundColor: Colors.hover,
               },
               '&.Mui-selected:hover': {
                 backgroundColor: Colors.hover,

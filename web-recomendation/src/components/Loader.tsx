@@ -1,20 +1,22 @@
 import * as React from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
+import { Stack } from '@mui/material';
 
 const Loader: React.FC = () => {
   return (
-    <Box
-      sx={{
-        width: 'min-content',
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'transalate(-50%,-50%)',
-      }}
+    <Stack
+      direction="row"
+      justifyContent="center"
+      alignItems="center"
+      sx={{ minHeight: 'inherit' }}
     >
-      <CircularProgress size="50px" />
-    </Box>
+      <CircularProgress
+        size="40px"
+        sx={{
+          width: 'min-content',
+        }}
+      />
+    </Stack>
   );
 };
 

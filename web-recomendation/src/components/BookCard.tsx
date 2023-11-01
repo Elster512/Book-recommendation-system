@@ -19,11 +19,19 @@ interface IBookProps {
 
 const BookCard: React.FC<IBookProps> = ({ book }) => {
   return (
-    <Grid md={12} lg={4}>
-      <Link to={book.ISBN} style={{ textDecoration: 'none' }}>
+    <Grid sm={12} md={6} lg={4}>
+      <Link
+        to={book.ISBN}
+        style={{
+          textDecoration: 'none',
+          display: 'block',
+          width: 'min-content',
+          height: 'min-content',
+        }}
+      >
         <Card
           sx={{
-            width: '420px',
+            width: '390px',
             height: '300px',
             m: '0 auto',
             display: 'flex',

@@ -10,9 +10,10 @@ const BooksList: React.FC<IBookListProps> = ({ books }) => {
     <Grid2
       container
       rowSpacing={3}
+      columnSpacing={5}
       sx={{
         margin: '0 auto',
-        maxWidth: { xs: 'min-content', lg: '1300px' },
+        maxWidth: { xs: 'min-content', md: '800px', lg: '1300px' },
       }}
     >
       {books.map((book: Book) => (
