@@ -1,18 +1,22 @@
 import React, { useEffect } from 'react';
 import { Container, Box } from '@mui/material';
 
-import { useGetBooksQuery } from '../../store/bookApi';
+import { useGetBooksQuery, useGetRecBooksQuery } from '../../store/bookApi';
 
-import BookPagination from '../../components/BookPagination';
+import BookPagination from '../../components/Home/BookPagination';
 import { useSearchParams } from 'react-router-dom';
 import { pageChecker } from '../../helpers/ParamsChecker';
 import Reccomendations from '../../components/Reccomendations';
-import Loader from '../../components/Loader';
-import BooksList from '../../components/BooksList';
+import Loader from '../../components/Layout/Loader';
+import BooksList from '../../components/Home/BooksList';
 
 const Home: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-
+  const {
+    data: reccomendedBooks,
+    isError: recError,
+    isLoading: loadingRecBooks,
+  } = useGetRecBooksQuery();
   const {
     data: books,
     isError: bookError,
@@ -55,7 +59,11 @@ const Home: React.FC = () => {
           height: '100%',
         }}
       >
-        <Reccomendations />
+        <Reccomendations
+          rec_books={reccomendedBooks?.rec_books}
+          recLoading={loadingRecBooks}
+          recError={recError}
+        />
         {fetchingBooks && <Loader />}
         {!fetchingBooks && books?.books && <BooksList books={books?.books} />}
       </Container>

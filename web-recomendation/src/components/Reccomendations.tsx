@@ -1,15 +1,20 @@
 import { Container, Typography } from '@mui/material';
 import React from 'react';
 
-import Loader from './Loader';
-import { useGetRecBooksQuery } from '../store/bookApi';
+import Loader from './Layout/Loader';
+import { Book } from '../types/bookcard';
+import BooksCarousel from './Carousel/BooksCarousel';
+interface IReccomendationsProps {
+  rec_books: Book[] | undefined;
+  recError: boolean;
+  recLoading: boolean;
+}
 
-const Reccomendations: React.FC = () => {
-  const {
-    data: reccomendedBooks,
-    isError: recError,
-    isFetching: fetchingRecBooks,
-  } = useGetRecBooksQuery();
+const Reccomendations: React.FC<IReccomendationsProps> = ({
+  recError,
+  rec_books,
+  recLoading,
+}) => {
   if (recError) {
     return (
       <Container>
@@ -21,10 +26,12 @@ const Reccomendations: React.FC = () => {
     <Container
       sx={{
         position: 'relative',
-        minHeight: '200px',
+        minHeight: '340px',
       }}
     >
-      {fetchingRecBooks && <Loader />}
+      <Typography variant="h5">Похоже на то,что вы читаете</Typography>
+      {recLoading && <Loader />}
+      {!recLoading && rec_books && <BooksCarousel books={rec_books} />}
     </Container>
   );
 };

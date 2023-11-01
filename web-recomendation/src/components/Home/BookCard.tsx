@@ -9,9 +9,9 @@ import {
   Tooltip,
 } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
-import { Book } from '../types/bookcard';
-import { Link } from 'react-router-dom';
-import { Colors } from '../styles';
+import { Book } from '../../types/bookcard';
+import { Colors } from '../../styles';
+import CustomLink from '../CustomLink';
 
 interface IBookProps {
   book: Book;
@@ -20,15 +20,7 @@ interface IBookProps {
 const BookCard: React.FC<IBookProps> = ({ book }) => {
   return (
     <Grid sm={12} md={6} lg={4}>
-      <Link
-        to={book.ISBN}
-        style={{
-          textDecoration: 'none',
-          display: 'block',
-          width: 'min-content',
-          height: 'min-content',
-        }}
-      >
+      <CustomLink to={book.ISBN}>
         <Card
           sx={{
             width: '390px',
@@ -108,7 +100,7 @@ const BookCard: React.FC<IBookProps> = ({ book }) => {
             />
           </CardContent>
         </Card>
-      </Link>
+      </CustomLink>
     </Grid>
   );
 };
