@@ -17,7 +17,7 @@ const Reccomendations: React.FC<IReccomendationsProps> = ({
 }) => {
   if (recError) {
     return (
-      <Container>
+      <Container sx={{ textAlign: 'center' }}>
         <Typography variant="h5">NOT FOUND</Typography>
       </Container>
     );
