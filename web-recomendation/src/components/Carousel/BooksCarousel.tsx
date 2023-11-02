@@ -19,7 +19,6 @@ const BooksCarousel: React.FC<IBookCarouselProps> = ({ books }) => {
   const md = useMediaQuery(queryMd);
   const lg = useMediaQuery(queryLg);
 
-  console.log(md);
   const amountOfSwiperSlides = (sm && 2) || (md && 3) || (lg && 4) || 5;
   return (
     <Swiper
