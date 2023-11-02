@@ -13,11 +13,11 @@ interface IBookCarouselProps {
 }
 const BooksCarousel: React.FC<IBookCarouselProps> = ({ books }) => {
   const theme = useTheme();
-  const matchesLg = useMediaQuery(theme.breakpoints.down('sm'));
-  const matchesMd = useMediaQuery(theme.breakpoints.up('md'));
-  const matchesSm = useMediaQuery(theme.breakpoints.down('md'));
+  const downSm = useMediaQuery(theme.breakpoints.down('sm'));
+  const downLg = useMediaQuery(theme.breakpoints.down('lg'));
+  const downMd = useMediaQuery(theme.breakpoints.down('md'));
   const amountOfSwiperSlides =
-    (matchesLg && 2) || (matchesMd && 4) || (matchesSm && 3) || 4;
+    (downSm && 2) || (downMd && 3) || (downLg && 4) || 5;
   return (
     <Swiper
       slidesPerView={amountOfSwiperSlides}
