@@ -11,7 +11,7 @@ import {
 import Grid from '@mui/material/Unstable_Grid2';
 import { Book } from '../../types/bookcard';
 import { Colors } from '../../styles';
-import CustomLink from '../CustomLink';
+import CustomLink from '../Layout/CustomLink';
 
 interface IBookProps {
   book: Book;

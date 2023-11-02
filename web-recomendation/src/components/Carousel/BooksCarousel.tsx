@@ -1,29 +1,36 @@
 import React from 'react';
 import s from './carousel.module.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Autoplay, Pagination } from 'swiper/modules';
-import { Book } from '../../types/bookcard';
-import CarouselItem from './CarouselItem';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import CustomLink from '../CustomLink';
-import { useMediaQuery, useTheme } from '@mui/material';
+import { Autoplay, Pagination } from 'swiper/modules';
+import { Book } from '../../types/bookcard';
+import CarouselItem from './CarouselItem';
+
+import CustomLink from '../Layout/CustomLink';
+import { useMediaQuery } from '@mui/material';
+import { queryLg, queryMd, querySm } from './queries';
 
 interface IBookCarouselProps {
   books: Book[];
 }
 const BooksCarousel: React.FC<IBookCarouselProps> = ({ books }) => {
-  const theme = useTheme();
-  const downSm = useMediaQuery(theme.breakpoints.down('sm'));
-  const downLg = useMediaQuery(theme.breakpoints.down('lg'));
-  const downMd = useMediaQuery(theme.breakpoints.down('md'));
-  const amountOfSwiperSlides =
-    (downSm && 2) || (downMd && 3) || (downLg && 4) || 5;
+  const sm = useMediaQuery(querySm);
+  const md = useMediaQuery(queryMd);
+  const lg = useMediaQuery(queryLg);
+
+  console.log(md);
+  const amountOfSwiperSlides = (sm && 2) || (md && 3) || (lg && 4) || 5;
   return (
     <Swiper
       slidesPerView={amountOfSwiperSlides}
       spaceBetween={25}
-      modules={[Navigation, Autoplay, Pagination]}
+      pagination={{
+        dynamicBullets: true,
+        clickable: true,
+        el: '.swiper-pagination',
+      }}
+      modules={[Autoplay, Pagination]}
       slidesPerGroup={amountOfSwiperSlides}
       watchSlidesProgress
       className={s.swiper}
@@ -31,7 +38,6 @@ const BooksCarousel: React.FC<IBookCarouselProps> = ({ books }) => {
         delay: 5000,
         pauseOnMouseEnter: true,
       }}
-      navigation={{ nextEl: '.arrow-right', prevEl: '.arrow-left' }}
     >
       {books.map((el) => (
         <SwiperSlide key={el.ISBN}>
@@ -40,6 +46,7 @@ const BooksCarousel: React.FC<IBookCarouselProps> = ({ books }) => {
           </CustomLink>
         </SwiperSlide>
       ))}
+      <div className="swiper-pagination"></div>
     </Swiper>
   );
 };
