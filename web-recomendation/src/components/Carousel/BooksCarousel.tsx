@@ -6,17 +6,24 @@ import { Book } from '../../types/bookcard';
 import CarouselItem from './CarouselItem';
 import 'swiper/css';
 import CustomLink from '../CustomLink';
+import { useMediaQuery, useTheme } from '@mui/material';
 
 interface IBookCarouselProps {
   books: Book[];
 }
 const BooksCarousel: React.FC<IBookCarouselProps> = ({ books }) => {
+  const theme = useTheme();
+  const matchesLg = useMediaQuery(theme.breakpoints.down('sm'));
+  const matchesMd = useMediaQuery(theme.breakpoints.up('md'));
+  const matchesSm = useMediaQuery(theme.breakpoints.down('md'));
+  const amountOfSwiperSlides =
+    (matchesLg && 2) || (matchesMd && 4) || (matchesSm && 3) || 4;
   return (
     <Swiper
-      slidesPerView={5}
+      slidesPerView={amountOfSwiperSlides}
       spaceBetween={25}
       modules={[Navigation, Autoplay]}
-      slidesPerGroup={5}
+      slidesPerGroup={amountOfSwiperSlides}
       watchSlidesProgress
       className={s.swiper}
       autoplay={{
