@@ -1,10 +1,11 @@
 import React from 'react';
 import s from './carousel.module.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Autoplay } from 'swiper/modules';
+import { Navigation, Autoplay, Pagination } from 'swiper/modules';
 import { Book } from '../../types/bookcard';
 import CarouselItem from './CarouselItem';
 import 'swiper/css';
+import 'swiper/css/pagination';
 import CustomLink from '../CustomLink';
 import { useMediaQuery, useTheme } from '@mui/material';
 
@@ -22,7 +23,7 @@ const BooksCarousel: React.FC<IBookCarouselProps> = ({ books }) => {
     <Swiper
       slidesPerView={amountOfSwiperSlides}
       spaceBetween={25}
-      modules={[Navigation, Autoplay]}
+      modules={[Navigation, Autoplay, Pagination]}
       slidesPerGroup={amountOfSwiperSlides}
       watchSlidesProgress
       className={s.swiper}
