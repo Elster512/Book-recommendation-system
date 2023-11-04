@@ -17,7 +17,7 @@ const CarouselItem: React.FC<ICarouselItem> = ({ item }) => {
     <Card
       sx={{
         minHeight: 'inherit',
-        width: { xs: '210px', sm: '190px', md: '210px' },
+        width: { xs: '210px', sm: '200px', md: '210px' },
         height: 'inherit',
         position: 'relative',
       }}

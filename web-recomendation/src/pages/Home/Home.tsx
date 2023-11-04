@@ -55,7 +55,7 @@ const Home: React.FC = () => {
         sx={{
           mt: '50px',
           maxWidth: '1600px',
-          minHeight: '1400px',
+          minHeight: '1000px',
           height: '100%',
         }}
       >

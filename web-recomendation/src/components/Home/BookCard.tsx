@@ -8,7 +8,7 @@ import {
   Rating,
   Tooltip,
 } from '@mui/material';
-import Grid from '@mui/material/Unstable_Grid2';
+import Grid2 from '@mui/material/Unstable_Grid2';
 import { Book } from '../../types/bookcard';
 import { Colors } from '../../styles';
 import CustomLink from '../Layout/CustomLink';
@@ -19,7 +19,7 @@ interface IBookProps {
 
 const BookCard: React.FC<IBookProps> = ({ book }) => {
   return (
-    <Grid sm={12} md={6} lg={4}>
+    <Grid2 sm={12} md={6} lg={4}>
       <CustomLink to={book.ISBN}>
         <Card
           sx={{
@@ -96,7 +96,7 @@ const BookCard: React.FC<IBookProps> = ({ book }) => {
           </CardContent>
         </Card>
       </CustomLink>
-    </Grid>
+    </Grid2>
   );
 };
 
