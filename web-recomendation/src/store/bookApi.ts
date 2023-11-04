@@ -25,8 +25,19 @@ export const booksApi = createApi({
       query: () => 'rec_user',
       providesTags: () => ['Books', 'Rec', 'User'],
     }),
+    getRecBooksForBook: builder.query<
+      { rec_books: Book[] },
+      string | undefined
+    >({
+      query: (id) => `rec_book?${id && `title=${id}`}`,
+      providesTags: () => ['Books', 'Book', 'Rec'],
+    }),
   }),
 });
 
-export const { useGetBooksQuery, useGetSingleBookQuery, useGetRecBooksQuery } =
-  booksApi;
+export const {
+  useGetBooksQuery,
+  useGetSingleBookQuery,
+  useGetRecBooksQuery,
+  useGetRecBooksForBookQuery,
+} = booksApi;

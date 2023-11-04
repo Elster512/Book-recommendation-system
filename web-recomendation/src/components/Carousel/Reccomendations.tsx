@@ -29,7 +29,9 @@ const Reccomendations: React.FC<IReccomendationsProps> = ({
         minHeight: '340px',
       }}
     >
-      <Typography variant="h5">Похоже на то,что вы читаете</Typography>
+      <Typography variant="h5" sx={{ mb: '20px' }}>
+        Похоже на то,что вы читаете
+      </Typography>
       {recLoading && <Loader />}
       {!recLoading && rec_books && <BooksCarousel books={rec_books} />}
     </Container>

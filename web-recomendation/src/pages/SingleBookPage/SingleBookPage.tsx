@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined';
+import ArrowBackIosNewOutlinedIcon from '@mui/icons-material/ArrowBackIosNewOutlined';
 import FmdGoodOutlinedIcon from '@mui/icons-material/FmdGoodOutlined';
 import {
   Container,
@@ -11,10 +12,14 @@ import {
   Stack,
   Paper,
 } from '@mui/material';
-import { useGetSingleBookQuery } from '../../store/bookApi';
+import {
+  useGetRecBooksForBookQuery,
+  useGetSingleBookQuery,
+} from '../../store/bookApi';
 import Loader from '../../components/Layout/Loader';
 import Grid2 from '@mui/material/Unstable_Grid2';
 import { Colors } from '../../styles';
+import Reccomendations from '../../components/Carousel/Reccomendations';
 
 const paperStyle = {
   border: 'unset',
@@ -27,15 +32,26 @@ const paperStyle = {
 const SingleBookPage: React.FC = () => {
   const { bookID } = useParams();
   const navigate = useNavigate();
+
+  const {
+    data: rec_books,
+    isLoading: recLoading,
+    isError: recError,
+  } = useGetRecBooksForBookQuery(bookID);
   const {
     data: singleBook,
-    isLoading,
-    isError,
+    isLoading: singleBookLoading,
+    isError: singleBookError,
   } = useGetSingleBookQuery(bookID);
-  if (isError) {
+
+  const onClickHandler = () => {
+    navigate(-1);
+  };
+
+  if (singleBookError) {
     navigate('/', { replace: true });
   }
-  if (isLoading) {
+  if (singleBookLoading) {
     return (
       <Container
         maxWidth={false}
@@ -51,8 +67,23 @@ const SingleBookPage: React.FC = () => {
   }
   return (
     <Box>
-      <Container>
-        <Grid2 container spacing={2} sx={{ mt: '20px' }}>
+      <Container maxWidth={false} sx={{ maxWidth: '1300px' }}>
+        <Grid2 container spacing={2} sx={{ mt: '20px', mb: '20px' }}>
+          <Grid2 xs={12}>
+            <Button
+              onClick={onClickHandler}
+              sx={{
+                color: 'white',
+                width: '100px',
+                pl: '0',
+                backgroundColor: Colors.hover,
+                '&:hover': { backgroundColor: Colors.selected },
+              }}
+            >
+              <ArrowBackIosNewOutlinedIcon sx={{ fontSize: '20px' }} />
+              <Typography sx={{ ml: '5px' }}>BACK</Typography>
+            </Button>
+          </Grid2>
           <Grid2 xs={12} md={6}>
             <Box
               component="img"
@@ -93,6 +124,7 @@ const SingleBookPage: React.FC = () => {
             <Box
               sx={{
                 boxShadow: 3,
+                maxWidth: { xs: 'unset', md: '500px' },
                 p: '20px',
                 borderRadius: '10px',
                 mt: '20px',
@@ -115,31 +147,36 @@ const SingleBookPage: React.FC = () => {
                 }}
                 disabled
               >
-                КУПИТЬ
+                BUY
               </Button>
               <Stack>
                 <Paper sx={paperStyle}>
                   <LocalShippingOutlinedIcon />
                   <Typography sx={{ ml: '10px', display: 'block' }}>
-                    Доставка курьером, 180 ₽
+                    Courier delivery, 180 ₽
                   </Typography>
                 </Paper>
                 <Paper sx={paperStyle}>
                   <FmdGoodOutlinedIcon />
                   <Typography sx={{ ml: '10px', display: 'block' }}>
-                    Доставка курьером, бесплатно
+                    In a chain store, бесплатно
                   </Typography>
                 </Paper>
                 <Paper sx={paperStyle}>
                   <LocalShippingOutlinedIcon />
                   <Typography sx={{ ml: '10px', display: 'block' }}>
-                    В пункт выдаче, 121 ₽
+                    To the pick-up point, 121 ₽
                   </Typography>
                 </Paper>
               </Stack>
             </Box>
           </Grid2>
         </Grid2>
+        <Reccomendations
+          recError={recError}
+          recLoading={recLoading}
+          rec_books={rec_books?.rec_books}
+        />
       </Container>
     </Box>
   );
