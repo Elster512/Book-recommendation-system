@@ -8,12 +8,14 @@ interface IReccomendationsProps {
   rec_books: Book[] | undefined;
   recError: boolean;
   recLoading: boolean;
+  onSinglePage: boolean;
 }
 
 const Reccomendations: React.FC<IReccomendationsProps> = ({
   recError,
   rec_books,
   recLoading,
+  onSinglePage,
 }) => {
   if (recError) {
     return (
@@ -33,7 +35,9 @@ const Reccomendations: React.FC<IReccomendationsProps> = ({
         Похоже на то,что вы читаете
       </Typography>
       {recLoading && <Loader />}
-      {!recLoading && rec_books && <BooksCarousel books={rec_books} />}
+      {!recLoading && rec_books && (
+        <BooksCarousel onSinglePage={onSinglePage} books={rec_books} />
+      )}
     </Container>
   );
 };

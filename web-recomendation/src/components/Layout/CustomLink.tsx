@@ -10,7 +10,6 @@ const CustomLink: React.FC<ICustomLinkProps> = ({ children, to }) => {
       to={`/${to}`}
       style={{
         textDecoration: 'none',
-        display: 'block',
         width: 'min-content',
         height: 'min-content',
       }}

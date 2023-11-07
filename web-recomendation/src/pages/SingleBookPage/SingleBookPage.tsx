@@ -1,17 +1,9 @@
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined';
+
 import ArrowBackIosNewOutlinedIcon from '@mui/icons-material/ArrowBackIosNewOutlined';
-import FmdGoodOutlinedIcon from '@mui/icons-material/FmdGoodOutlined';
-import {
-  Container,
-  Box,
-  Typography,
-  Rating,
-  Button,
-  Stack,
-  Paper,
-} from '@mui/material';
+
+import { Container, Box, Typography, Button } from '@mui/material';
 import {
   useGetRecBooksForBookQuery,
   useGetSingleBookQuery,
@@ -20,14 +12,9 @@ import Loader from '../../components/Layout/Loader';
 import Grid2 from '@mui/material/Unstable_Grid2';
 import { Colors } from '../../styles';
 import Reccomendations from '../../components/Carousel/Reccomendations';
-
-const paperStyle = {
-  border: 'unset',
-  boxShadow: 'unset',
-  mt: '10px',
-  display: 'flex',
-  flexWrap: 'nowrap',
-};
+import Description from '../../components/SingleBookPage/Description';
+import { Book } from '../../types/bookcard';
+import DeliveryBlock from '../../components/SingleBookPage/DeliveryBlock';
 
 const SingleBookPage: React.FC = () => {
   const { bookID } = useParams();
@@ -93,7 +80,7 @@ const SingleBookPage: React.FC = () => {
                 borderRadius: '10px',
                 display: 'block',
                 minHeight: '400px',
-
+                minWidth: '305px',
                 maxHeight: '500px',
                 maxWidth: 'min-content',
                 objectFit: 'contain',
@@ -103,76 +90,13 @@ const SingleBookPage: React.FC = () => {
             />
           </Grid2>
           <Grid2 xs={12} md={6}>
-            <Typography gutterBottom variant="h4">
-              {singleBook?.book.bookTitle}
-            </Typography>
-            <Typography gutterBottom variant="h5">
-              {singleBook?.book.bookAuthor}
-            </Typography>
-            <Typography gutterBottom variant="h6">
-              Year of publication: {singleBook?.book.yearOfPublication}
-            </Typography>
-            <Typography gutterBottom variant="h6">
-              Publisher: {singleBook?.book.publisher}
-            </Typography>
-            <Rating
-              readOnly
-              size="large"
-              value={singleBook?.book.bookRating}
-              precision={0.5}
-            />
-            <Box
-              sx={{
-                boxShadow: 3,
-                maxWidth: { xs: 'unset', md: '500px' },
-                p: '20px',
-                borderRadius: '10px',
-                mt: '20px',
-              }}
-            >
-              <Button
-                sx={{
-                  width: '100%',
-                  height: '60px',
-                  backgroundColor: Colors.hover,
-                  color: 'white',
-                  '&.Mui-disabled': {
-                    color: '#DCDCDC',
-                    cursor: 'not-allowed',
-                    pointerEvents: 'unset',
-                  },
-                  '&:hover': {
-                    backgroundColor: Colors.hover,
-                  },
-                }}
-                disabled
-              >
-                BUY
-              </Button>
-              <Stack>
-                <Paper sx={paperStyle}>
-                  <LocalShippingOutlinedIcon />
-                  <Typography sx={{ ml: '10px', display: 'block' }}>
-                    Courier delivery, 180 ₽
-                  </Typography>
-                </Paper>
-                <Paper sx={paperStyle}>
-                  <FmdGoodOutlinedIcon />
-                  <Typography sx={{ ml: '10px', display: 'block' }}>
-                    In a chain store, бесплатно
-                  </Typography>
-                </Paper>
-                <Paper sx={paperStyle}>
-                  <LocalShippingOutlinedIcon />
-                  <Typography sx={{ ml: '10px', display: 'block' }}>
-                    To the pick-up point, 121 ₽
-                  </Typography>
-                </Paper>
-              </Stack>
-            </Box>
+            <Description book={singleBook?.book as Book} />
+
+            <DeliveryBlock />
           </Grid2>
         </Grid2>
         <Reccomendations
+          onSinglePage={true}
           recError={recError}
           recLoading={recLoading}
           rec_books={rec_books?.rec_books}

@@ -63,6 +63,7 @@ const Home: React.FC = () => {
           rec_books={reccomendedBooks?.rec_books}
           recLoading={loadingRecBooks}
           recError={recError}
+          onSinglePage={false}
         />
         {fetchingBooks && <Loader />}
         {!fetchingBooks && books?.books && <BooksList books={books?.books} />}
