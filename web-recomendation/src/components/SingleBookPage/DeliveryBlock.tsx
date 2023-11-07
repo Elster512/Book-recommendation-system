@@ -2,7 +2,7 @@ import { Box, Button, Paper, Stack, Typography } from '@mui/material';
 import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined';
 import FmdGoodOutlinedIcon from '@mui/icons-material/FmdGoodOutlined';
 import React from 'react';
-import { Colors } from '../../styles';
+import { Colors } from '../../styles/styles';
 const paperStyle = {
   border: 'unset',
   boxShadow: 'unset',

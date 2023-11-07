@@ -1,13 +1,13 @@
 import React from 'react';
-import s from './carousel.module.css';
+import s from './BooksCarousel.module.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-import { Book } from '../../types/bookcard';
-import CarouselItem from './CarouselItem';
+import { Book } from '../../../types/bookcard';
+import CarouselItem from '../CarouselItem/CarouselItem';
 
-import CustomLink from '../Layout/CustomLink';
+import CustomLink from '../../UI/CustomLink/CustomLink';
 import { IconButton, useMediaQuery } from '@mui/material';
 import ArrowBackIosOutlinedIcon from '@mui/icons-material/ArrowBackIosOutlined';
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';

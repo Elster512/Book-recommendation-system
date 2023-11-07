@@ -8,10 +8,10 @@ import {
   useGetRecBooksForBookQuery,
   useGetSingleBookQuery,
 } from '../../store/bookApi';
-import Loader from '../../components/Layout/Loader';
+import Loader from '../../components/UI/Loader/Loader';
 import Grid2 from '@mui/material/Unstable_Grid2';
-import { Colors } from '../../styles';
-import Reccomendations from '../../components/Carousel/Reccomendations';
+import { Colors } from '../../styles/styles';
+import Reccomendations from '../../components/Carousel/Reccomendation/Reccomendations';
 import Description from '../../components/SingleBookPage/Description';
 import { Book } from '../../types/bookcard';
 import DeliveryBlock from '../../components/SingleBookPage/DeliveryBlock';

@@ -1,9 +1,9 @@
 import { Container, Typography } from '@mui/material';
 import React from 'react';
 
-import Loader from '../Layout/Loader';
-import { Book } from '../../types/bookcard';
-import BooksCarousel from './BooksCarousel';
+import Loader from '../../UI/Loader/Loader';
+import { Book } from '../../../types/bookcard';
+import BooksCarousel from '../BooksCarousel/BooksCarousel';
 interface IReccomendationsProps {
   rec_books: Book[] | undefined;
   recError: boolean;

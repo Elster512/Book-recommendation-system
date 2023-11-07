@@ -1,5 +1,5 @@
 import React from 'react';
-import { Book } from '../../types/bookcard';
+import { Book } from '../../../types/bookcard';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import {
   Card,
