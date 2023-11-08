@@ -59,7 +59,7 @@ const CarouselItem: React.FC<ICarouselItem> = ({ item }) => {
           sx={{
             color: 'white',
             m: '20px',
-            dispalay: 'block',
+            display: 'block',
           }}
         >
           {item.bookTitle}

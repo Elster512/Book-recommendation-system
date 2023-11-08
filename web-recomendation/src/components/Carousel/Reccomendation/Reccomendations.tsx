@@ -32,7 +32,7 @@ const Reccomendations: React.FC<IReccomendationsProps> = ({
       }}
     >
       <Typography variant="h5" sx={{ mb: '20px' }}>
-        Похоже на то,что вы читаете
+        {onSinglePage ? 'Похоже на это' : 'Похоже на то,что вы читаете'}
       </Typography>
       {recLoading && <Loader />}
       {!recLoading && rec_books && (
