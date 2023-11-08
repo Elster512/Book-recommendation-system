@@ -4,6 +4,7 @@ import React from 'react';
 import Loader from '../../UI/Loader/Loader';
 import { Book } from '../../../types/bookcard';
 import BooksCarousel from '../BooksCarousel/BooksCarousel';
+import { Colors } from '../../../Colors/Colors';
 interface IReccomendationsProps {
   rec_books: Book[] | undefined;
   recError: boolean;
@@ -19,8 +20,10 @@ const Reccomendations: React.FC<IReccomendationsProps> = ({
 }) => {
   if (recError) {
     return (
-      <Container sx={{ textAlign: 'center' }}>
-        <Typography variant="h5">NOT FOUND</Typography>
+      <Container sx={{ textAlign: 'center', p: '20px' }}>
+        <Typography variant="h5" sx={{ color: Colors.hover }}>
+          РЕКОМЕНДАЦИИ НЕ НАЙДЕНЫ
+        </Typography>
       </Container>
     );
   }

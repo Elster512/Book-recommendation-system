@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Container, Pagination, PaginationItem } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { Colors } from '../../styles/styles';
+import { Colors } from '../../../Colors/Colors';
 interface IBookPaginationProps {
   pages: number;
   page: number;

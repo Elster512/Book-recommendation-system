@@ -10,11 +10,11 @@ import {
 } from '../../store/bookApi';
 import Loader from '../../components/UI/Loader/Loader';
 import Grid2 from '@mui/material/Unstable_Grid2';
-import { Colors } from '../../styles/styles';
+import { Colors } from '../../Colors/Colors';
 import Reccomendations from '../../components/Carousel/Reccomendation/Reccomendations';
-import Description from '../../components/SingleBookPage/Description';
+import Description from '../../components/SingleBookPage/Description/Description';
 import { Book } from '../../types/bookcard';
-import DeliveryBlock from '../../components/SingleBookPage/DeliveryBlock';
+import DeliveryBlock from '../../components/SingleBookPage/DeliveryBlock/DeliveryBlock';
 
 const SingleBookPage: React.FC = () => {
   const { bookID } = useParams();

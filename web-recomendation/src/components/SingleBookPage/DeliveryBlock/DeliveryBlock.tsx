@@ -2,7 +2,7 @@ import { Box, Button, Paper, Stack, Typography } from '@mui/material';
 import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined';
 import FmdGoodOutlinedIcon from '@mui/icons-material/FmdGoodOutlined';
 import React from 'react';
-import { Colors } from '../../styles/styles';
+import { Colors } from '../../../Colors/Colors';
 const paperStyle = {
   border: 'unset',
   boxShadow: 'unset',
@@ -52,9 +52,7 @@ const DeliveryBlock: React.FC = () => {
           </Paper>
           <Paper sx={paperStyle}>
             <FmdGoodOutlinedIcon />
-            <Typography sx={typographyStyle}>
-              In a chain store, бесплатно
-            </Typography>
+            <Typography sx={typographyStyle}>In a chain store, free</Typography>
           </Paper>
           <Paper sx={paperStyle}>
             <LocalShippingOutlinedIcon />

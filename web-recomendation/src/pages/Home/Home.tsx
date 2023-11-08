@@ -3,12 +3,12 @@ import { Container, Box } from '@mui/material';
 
 import { useGetBooksQuery, useGetRecBooksQuery } from '../../store/bookApi';
 
-import BookPagination from '../../components/Home/BookPagination';
+import BookPagination from '../../components/Home/BookPagination/BookPagination';
 import { useSearchParams } from 'react-router-dom';
 import { pageChecker } from '../../helpers/ParamsChecker';
 import Reccomendations from '../../components/Carousel/Reccomendation/Reccomendations';
 import Loader from '../../components/UI/Loader/Loader';
-import BooksList from '../../components/Home/BooksList';
+import BooksList from '../../components/Home/BookList/BooksList';
 
 const Home: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();

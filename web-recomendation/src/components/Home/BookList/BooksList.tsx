@@ -1,7 +1,7 @@
 import React from 'react';
-import { Book } from '../../types/bookcard';
+import { Book } from '../../../types/bookcard';
 import Grid2 from '@mui/material/Unstable_Grid2';
-import BookCard from './BookCard';
+import BookCard from '../BookCard/BookCard';
 interface IBookListProps {
   books: Book[];
 }

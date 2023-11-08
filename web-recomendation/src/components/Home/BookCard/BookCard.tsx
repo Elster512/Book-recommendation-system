@@ -9,9 +9,9 @@ import {
   Tooltip,
 } from '@mui/material';
 import Grid2 from '@mui/material/Unstable_Grid2';
-import { Book } from '../../types/bookcard';
-import { Colors } from '../../styles/styles';
-import CustomLink from '../UI/CustomLink/CustomLink';
+import { Book } from '../../../types/bookcard';
+import { Colors } from '../../../Colors/Colors';
+import CustomLink from '../../UI/CustomLink/CustomLink';
 
 interface IBookProps {
   book: Book;

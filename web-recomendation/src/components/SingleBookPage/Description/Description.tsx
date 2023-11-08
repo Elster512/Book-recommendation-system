@@ -1,6 +1,6 @@
 import { Rating, Typography } from '@mui/material';
 import React from 'react';
-import { Book } from '../../types/bookcard';
+import { Book } from '../../../types/bookcard';
 
 interface IDescriptionProps {
   book: Book;
