@@ -23,6 +23,7 @@
   opacity: 0.6;
   cursor: not-allowed;
   background-color: #f4f4fc;
+  color: #bed2e6 !important;
 }
 .buttonRight {
   transform: translate(55%, -50%);
