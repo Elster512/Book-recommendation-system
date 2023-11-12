@@ -264,7 +264,7 @@ def books():
         return jsonify({'books':booksDict[0:amount_of_books],'pages':pages,'page':1}),200
     if int(page)*amount_of_books >len(booksDict):
         return jsonify({'error':'error'}),404
-    return jsonify({'books':booksDict[(int(page))*amount_of_books:(int(page)+1)*amount_of_books],'pages':pages,'page':int(page)}),200
+    return jsonify({'books':booksDict[(int(page)-1)*amount_of_books:(int(page))*amount_of_books],'pages':pages,'page':int(page)}),200
 
 
 

@@ -47,7 +47,6 @@ const Home: React.FC = () => {
       </Container>
     );
   }
-  console.log(books);
   return (
     <Box>
       <Container
