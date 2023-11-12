@@ -102,7 +102,7 @@ print(avg_ratings[avg_ratings['bookTitle']=="Harry Potter and the Sorcerer's Sto
 final_rating = rating_with_books.merge(number_rating, on='bookTitle')
 
 # %%
-final_rating = final_rating[final_rating['number_of_ratings'] >= 40]
+final_rating = final_rating[final_rating['number_of_ratings'] >= 80]
 final_rating.drop_duplicates(['userID','bookTitle'], inplace=True)
 
 # %%
