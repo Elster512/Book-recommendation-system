@@ -258,7 +258,7 @@ def hello_world():
 @cross_origin()
 def books():
     amount = len(booksDict)
-    pages =math.ceil(amount/amount_of_books-1)
+    pages =math.ceil(amount/amount_of_books)
     page = request.args.get('page')
     if not page:
         return jsonify({'books':booksDict[0:amount_of_books],'pages':pages,'page':1}),200
