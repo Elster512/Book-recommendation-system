@@ -93,7 +93,7 @@ number_rating.rename(columns= {'bookRating':'number_of_ratings'}, inplace=True)
 number_rating
 
 # %%
-avg_ratings = rating_with_books.groupby('bookTitle')['bookRating'].mean().reset_index()
+avg_ratings = rating_with_books[rating_with_books['bookRating'] >0].groupby('bookTitle')['bookRating'].mean().reset_index()
 print(avg_ratings[avg_ratings['bookTitle']=="Harry Potter and the Sorcerer's Stone (Harry Potter (Paperback))"])
 avg_ratings['bookRating'] = ((avg_ratings['bookRating'] - avg_ratings['bookRating'].min())/(avg_ratings['bookRating'].max()-avg_ratings['bookRating'].min()))*5
 print(avg_ratings[avg_ratings['bookTitle']=="Harry Potter and the Sorcerer's Stone (Harry Potter (Paperback))"])
