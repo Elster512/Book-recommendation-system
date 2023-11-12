@@ -23,7 +23,6 @@ const Home: React.FC = () => {
     isFetching: fetchingBooks,
     isLoading: loadingBooks,
   } = useGetBooksQuery(searchParams.get("page") || "1");
-
   useEffect(() => {
     const pageParam = searchParams.get("page");
     if (!pageChecker(pageParam)) {
@@ -48,6 +47,7 @@ const Home: React.FC = () => {
       </Container>
     );
   }
+  console.log(books);
   return (
     <Box>
       <Container
