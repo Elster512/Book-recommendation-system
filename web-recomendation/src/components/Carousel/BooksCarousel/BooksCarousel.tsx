@@ -1,17 +1,17 @@
-import React from 'react';
-import s from './BooksCarousel.module.css';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-import { Book } from '../../../types/bookcard';
-import CarouselItem from '../CarouselItem/CarouselItem';
+import React from "react";
+import s from "./BooksCarousel.module.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { Book } from "../../../types/bookcard";
+import CarouselItem from "../CarouselItem/CarouselItem";
 
-import CustomLink from '../../UI/CustomLink/CustomLink';
-import { IconButton, useMediaQuery } from '@mui/material';
-import ArrowBackIosOutlinedIcon from '@mui/icons-material/ArrowBackIosOutlined';
-import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
-import { queryLg, queryMd, querySm } from './queries';
+import CustomLink from "../../UI/CustomLink/CustomLink";
+import { IconButton, useMediaQuery } from "@mui/material";
+import ArrowBackIosOutlinedIcon from "@mui/icons-material/ArrowBackIosOutlined";
+import ArrowForwardIosOutlinedIcon from "@mui/icons-material/ArrowForwardIosOutlined";
+import { queryLg, queryMd, querySm, queryXs } from "./queries";
 
 interface IBookCarouselProps {
   books: Book[];
@@ -21,10 +21,12 @@ const BooksCarousel: React.FC<IBookCarouselProps> = ({
   books,
   onSinglePage,
 }) => {
+  const xs = useMediaQuery(queryXs);
   const sm = useMediaQuery(querySm);
   const md = useMediaQuery(queryMd);
   const lg = useMediaQuery(queryLg);
-  const amountOfSwiperSlides = (sm && 2) || (md && 3) || (lg && 4) || 5;
+  const amountOfSwiperSlides =
+    (xs && 1) || (sm && 2) || (md && 3) || (lg && 4) || 5;
   return (
     <>
       <Swiper
@@ -33,9 +35,9 @@ const BooksCarousel: React.FC<IBookCarouselProps> = ({
         pagination={{
           dynamicBullets: true,
           clickable: true,
-          el: '.swiper-pagination',
+          el: ".swiper-pagination",
         }}
-        navigation={{ nextEl: '.arrow-right', prevEl: '.arrow-left' }}
+        navigation={{ nextEl: ".arrow-right", prevEl: ".arrow-left" }}
         modules={[Autoplay, Pagination, Navigation]}
         slidesPerGroup={amountOfSwiperSlides}
         watchSlidesProgress
@@ -46,7 +48,7 @@ const BooksCarousel: React.FC<IBookCarouselProps> = ({
         }}
       >
         {books.map((el) => (
-          <SwiperSlide className={s['swiper-slide']} key={el.ISBN}>
+          <SwiperSlide className={s["swiper-slide"]} key={el.ISBN}>
             <CustomLink to={el.ISBN}>
               <CarouselItem item={el} />
             </CustomLink>
@@ -57,7 +59,7 @@ const BooksCarousel: React.FC<IBookCarouselProps> = ({
       <IconButton
         className={`${s.button} ${s.buttonLeft} arrow-left`}
         sx={{
-          display: { xs: 'none', lg: (!onSinglePage && 'none') || 'block' },
+          display: { xs: "none", lg: (!onSinglePage && "none") || "block" },
         }}
       >
         <ArrowBackIosOutlinedIcon fontSize="large" />
@@ -65,7 +67,7 @@ const BooksCarousel: React.FC<IBookCarouselProps> = ({
       <IconButton
         className={`${s.button} ${s.buttonRight} arrow-right`}
         sx={{
-          display: { xs: 'none', lg: (!onSinglePage && 'none') || 'block' },
+          display: { xs: "none", lg: (!onSinglePage && "none") || "block" },
         }}
       >
         <ArrowForwardIosOutlinedIcon fontSize="large" />
