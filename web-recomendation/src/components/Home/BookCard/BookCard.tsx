@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 import {
   Card,
@@ -7,11 +7,11 @@ import {
   Typography,
   Rating,
   Tooltip,
-} from '@mui/material';
-import Grid2 from '@mui/material/Unstable_Grid2';
-import { Book } from '../../../types/bookcard';
-import { Colors } from '../../../Colors/Colors';
-import CustomLink from '../../UI/CustomLink/CustomLink';
+} from "@mui/material";
+import Grid2 from "@mui/material/Unstable_Grid2";
+import { Book } from "../../../types/bookcard";
+import { Colors } from "../../../Colors/Colors";
+import CustomLink from "../../UI/CustomLink/CustomLink";
 
 interface IBookProps {
   book: Book;
@@ -23,16 +23,17 @@ const BookCard: React.FC<IBookProps> = ({ book }) => {
       <CustomLink to={book.ISBN}>
         <Card
           sx={{
-            width: '390px',
-            height: '300px',
-            m: '0 auto',
-            display: 'flex',
-            gap: '2px',
-            p: '2px',
-            boxSizing: 'border-box',
-            background: 'white',
-            transition: 'background 1s',
-            ':hover': {
+            transform: { xs: "scale(0.9)", sm: "none" },
+            width: "390px",
+            height: "300px",
+            m: "0 auto",
+            display: "flex",
+            gap: "2px",
+            p: "2px",
+            boxSizing: "border-box",
+            background: "white",
+            transition: "background 1s",
+            ":hover": {
               background: Colors.hover,
             },
           }}
@@ -40,20 +41,20 @@ const BookCard: React.FC<IBookProps> = ({ book }) => {
           <CardMedia
             component="img"
             sx={{
-              objectFit: 'contain',
-              height: '290px',
-              maxWidth: '200px',
-              minWidth: '200px',
-              alignSelf: 'center',
-              m: '10px 0 10px 5px',
+              objectFit: "contain",
+              height: "290px",
+              maxWidth: "200px",
+              minWidth: "200px",
+              alignSelf: "center",
+              m: "10px 0 10px 5px",
             }}
             image={book.imageUrlL}
             alt="bookimage"
           />
           <CardContent
             sx={{
-              maxHeight: '290px',
-              width: '200px',
+              maxHeight: "290px",
+              width: "200px",
             }}
           >
             <Tooltip
@@ -62,14 +63,14 @@ const BookCard: React.FC<IBookProps> = ({ book }) => {
               componentsProps={{
                 arrow: {
                   sx: {
-                    color: 'gray',
+                    color: "gray",
                   },
                 },
 
                 tooltip: {
                   sx: {
-                    background: 'gray',
-                    color: 'white',
+                    background: "gray",
+                    color: "white",
                   },
                 },
               }}
@@ -78,18 +79,18 @@ const BookCard: React.FC<IBookProps> = ({ book }) => {
               <Typography
                 variant="h6"
                 sx={{
-                  wordWrap: 'normal',
-                  overflow: 'hidden',
-                  textOverflow: 'ellipsis',
-                  display: '-webkit-box',
-                  WebkitLineClamp: '4',
-                  WebkitBoxOrient: 'vertical',
+                  wordWrap: "normal",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  display: "-webkit-box",
+                  WebkitLineClamp: "4",
+                  WebkitBoxOrient: "vertical",
                 }}
               >
                 {book.bookTitle}
               </Typography>
             </Tooltip>
-            <Typography variant="subtitle1" sx={{ wordBreak: 'break-word' }}>
+            <Typography variant="subtitle1" sx={{ wordBreak: "break-word" }}>
               {book.bookAuthor}
             </Typography>
             <Rating value={book.bookRating} readOnly precision={0.5} />
