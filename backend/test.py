@@ -259,7 +259,9 @@ def hello_world():
 def books():
     page = request.args.get('page')
     query = request.args.get('query') or ''
-    booksDict = sampleBooks[sampleBooks['bookTitle'].str.lower().contains(query)].to_dict('records')
+    if query:
+        query = query.replace('+',' ')
+    booksDict = sampleBooks[sampleBooks['bookTitle'].str.lower().str.contains(query)].to_dict('records')
     amount = len(booksDict)
     pages =math.ceil(amount/amount_of_books)
     if pages == 0:
