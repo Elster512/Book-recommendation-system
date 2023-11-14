@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { Book } from "../types/bookcard";
+import { Query } from "../types/query";
 
 const BASE_URL = "https://bookapu.onrender.com";
 export const booksApi = createApi({
@@ -12,9 +13,12 @@ export const booksApi = createApi({
   endpoints: (builder) => ({
     getBooks: builder.query<
       { books: Book[]; pages: number; page: number },
-      string
+      Query
     >({
-      query: (page) => `books?${page && `page=${page}`}`,
+      query: (query) =>
+        `books?${query.page && `page=${query.page}`}${
+          query.search.trim() && `&query=${query.search.split(" ").join("+")}`
+        }`,
       providesTags: () => ["Books"],
     }),
     getSingleBook: builder.query<{ book: Book }, string | undefined>({

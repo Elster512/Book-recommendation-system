@@ -7,6 +7,5 @@ export const pageChecker = (page: string | null) => {
   if (!page.match(pageReg)) {
     return false;
   }
-
   return true;
 };

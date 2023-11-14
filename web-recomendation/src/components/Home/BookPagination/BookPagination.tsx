@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Container, Pagination, PaginationItem } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { Colors } from "../../../Colors/Colors";
 interface IBookPaginationProps {
   pages: number;
@@ -9,6 +9,9 @@ interface IBookPaginationProps {
 }
 
 const BookPagination: React.FC<IBookPaginationProps> = ({ pages, page }) => {
+  const [searchParams] = useSearchParams();
+  const query = searchParams.get("query") || "";
+  console.log(query);
   return (
     <Container
       maxWidth={false}
@@ -41,7 +44,7 @@ const BookPagination: React.FC<IBookPaginationProps> = ({ pages, page }) => {
               },
             }}
             component={Link}
-            to={`/?page=${item.page}`}
+            to={`/?page=${item.page}${query && `&query=${query}`}`}
             {...item}
           />
         )}
