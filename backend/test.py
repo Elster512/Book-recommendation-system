@@ -258,8 +258,8 @@ def hello_world():
 @cross_origin()
 def books():
     page = request.args.get('page')
-    query = request.args.get('query')
-    booksDict = sampleBooks[sampleBooks['bookTitle'].str.contains(query.strip() or '')].to_dict('records')
+    query = request.args.get('query') or ''
+    booksDict = sampleBooks[sampleBooks['bookTitle'].str.contains()].to_dict('records')
     amount = len(booksDict)
     pages =math.ceil(amount/amount_of_books)
     if pages == 0:
