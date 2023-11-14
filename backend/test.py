@@ -258,7 +258,7 @@ def hello_world():
 @cross_origin()
 def books():
     page = request.args.get('page')
-    query = request.args.get('query') or ''
+    query = request.args.get('query')
     if query:
         query = query.replace('+',' ')
     booksDict = sampleBooks[sampleBooks['bookTitle'].str.lower().str.contains(query.lower())].to_dict('records')
