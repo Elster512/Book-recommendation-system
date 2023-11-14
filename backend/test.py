@@ -261,7 +261,7 @@ def books():
     query = request.args.get('query') or ''
     if query:
         query = query.replace('+',' ')
-    booksDict = sampleBooks[sampleBooks['bookTitle'].str.lower().str.contains(query)].to_dict('records')
+    booksDict = sampleBooks[sampleBooks['bookTitle'].str.lower().str.contains(query.lower())].to_dict('records')
     amount = len(booksDict)
     pages =math.ceil(amount/amount_of_books)
     if pages == 0:
