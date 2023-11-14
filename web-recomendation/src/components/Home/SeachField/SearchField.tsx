@@ -15,8 +15,10 @@ const SearchField: React.FC = () => {
   };
   return (
     <Container
+      maxWidth={false}
       sx={{
         display: "flex",
+        width: "100%",
         justifyContent: "center",
         mt: "20px",
         mb: "20px",
@@ -36,6 +38,7 @@ const SearchField: React.FC = () => {
             borderBottomColor: "green",
             fontSize: 30,
             padding: "10px",
+            textAlign: "center",
           },
         }}
         InputLabelProps={{
