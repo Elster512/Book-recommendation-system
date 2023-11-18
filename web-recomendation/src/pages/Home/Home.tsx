@@ -1,22 +1,22 @@
-import React, { useEffect } from "react";
-import { Container, Box } from "@mui/material";
+import React, { useEffect } from 'react';
+import { Container, Box } from '@mui/material';
 
-import { useGetBooksQuery, useGetRecBooksQuery } from "../../store/bookApi";
+import { useGetBooksQuery, useGetRecBooksQuery } from '../../store/bookApi';
 
-import BookPagination from "../../components/Home/BookPagination/BookPagination";
-import { useSearchParams } from "react-router-dom";
-import { pageChecker } from "../../helpers/ParamsChecker";
-import Reccomendations from "../../components/Carousel/Reccomendation/Reccomendations";
-import Loader from "../../components/UI/Loader/Loader";
-import BooksList from "../../components/Home/BookList/BooksList";
-import SearchField from "../../components/Home/SeachField/SearchField";
-import NotFound from "../../components/UI/NotFound/NotFound";
+import BookPagination from '../../components/Home/BookPagination/BookPagination';
+import { useSearchParams } from 'react-router-dom';
+import { pageChecker } from '../../helpers/ParamsChecker';
+import Reccomendations from '../../components/Carousel/Reccomendation/Reccomendations';
+import Loader from '../../components/UI/Loader/Loader';
+import BooksList from '../../components/Home/BookList/BooksList';
+import SearchField from '../../components/Home/SeachField/SearchField';
+import NotFound from '../../components/UI/NotFound/NotFound';
 
 const Home: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const query = {
-    page: searchParams.get("page") || "1",
-    search: searchParams.get("query")?.trim() || "",
+    page: searchParams.get('page') || '1',
+    search: searchParams.get('query')?.trim() || '',
   };
   const {
     data: reccomendedBooks,
@@ -30,23 +30,23 @@ const Home: React.FC = () => {
     isLoading: loadingBooks,
   } = useGetBooksQuery(query);
   useEffect(() => {
-    const pageParam = searchParams.get("page");
+    const pageParam = searchParams.get('page');
     if (!pageChecker(pageParam)) {
       const page = 1;
       setSearchParams({ page: page.toString() });
     }
   });
   if (bookError) {
-    setSearchParams({ page: "1" });
+    setSearchParams({ page: '1' });
   }
   if (loadingBooks) {
     return (
       <Container
         maxWidth={false}
         sx={{
-          position: "absolute",
-          top: "50%",
-          transform: "translate(0,-50%)",
+          position: 'absolute',
+          top: '50%',
+          transform: 'translate(0,-50%)',
         }}
       >
         <Loader />
@@ -58,10 +58,10 @@ const Home: React.FC = () => {
       <Container
         maxWidth={false}
         sx={{
-          mt: "50px",
-          maxWidth: "1600px",
-          minHeight: "600px",
-          height: "100%",
+          mt: '50px',
+          maxWidth: '1600px',
+          minHeight: '600px',
+          height: '100%',
         }}
       >
         <Reccomendations
