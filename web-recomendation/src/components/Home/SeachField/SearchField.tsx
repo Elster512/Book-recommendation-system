@@ -1,50 +1,61 @@
-import { Container, TextField } from "@mui/material";
+import { Container, TextField } from '@mui/material';
 
-import React from "react";
-import { useSearchParams } from "react-router-dom";
+import React, { useEffect, useRef, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 const SearchField: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const query = searchParams.get("query");
+  const query = searchParams.get('query');
+  const [input, setInput] = useState(query?.trim() || '');
+  const timer = useRef<any>();
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchParams({
-      page: "1",
-      query: e.currentTarget.value.trim() || "",
-    });
+    const { value } = e.target;
+    setInput(value);
   };
+
+  useEffect(() => {
+    clearTimeout(timer.current);
+    timer.current = setTimeout(() => {
+      setSearchParams({
+        page: '1',
+        query: input.trim() || '',
+      });
+    }, 500);
+  }, [input, setSearchParams]);
+
   return (
     <Container
       maxWidth={false}
       sx={{
-        display: "flex",
-        width: "100%",
-        justifyContent: "center",
-        mt: "20px",
-        mb: "20px",
+        display: 'flex',
+        width: '100%',
+        justifyContent: 'center',
+        mt: '20px',
+        mb: '20px',
       }}
     >
       <TextField
-        value={query?.trim() || ""}
+        value={input}
         onChange={onChangeHandler}
         sx={{
-          minWidth: "300px",
-          width: "600px",
+          minWidth: '300px',
+          width: '600px',
         }}
         variant="standard"
         placeholder="Search Something..."
         inputProps={{
           style: {
-            borderBottomColor: "green",
+            borderBottomColor: 'green',
             fontSize: 30,
-            padding: "10px",
-            textAlign: "center",
+            padding: '10px',
+            textAlign: 'center',
           },
         }}
         InputLabelProps={{
           style: {
             fontSize: 30,
-            marginBottom: "0px",
+            marginBottom: '0px',
           },
         }}
       />

@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import { Container, Pagination, PaginationItem } from "@mui/material";
-import { Link, useSearchParams } from "react-router-dom";
-import { Colors } from "../../../Colors/Colors";
+import { Container, Pagination, PaginationItem } from '@mui/material';
+import { Link, useSearchParams } from 'react-router-dom';
+import { Colors } from '../../../Colors/Colors';
 interface IBookPaginationProps {
   pages: number;
   page: number;
@@ -10,17 +10,16 @@ interface IBookPaginationProps {
 
 const BookPagination: React.FC<IBookPaginationProps> = ({ pages, page }) => {
   const [searchParams] = useSearchParams();
-  const query = searchParams.get("query") || "";
-  console.log(query);
+  const query = searchParams.get('query') || '';
   return (
     <Container
       maxWidth={false}
       sx={{
-        maxWidth: "1480px",
-        width: { xs: "100%", lg: "95%" },
-        display: "flex",
-        justifyContent: { xs: "center", lg: "flex-end" },
-        p: "20px  0 30px 0",
+        maxWidth: '1480px',
+        width: { xs: '100%', lg: '95%' },
+        display: 'flex',
+        justifyContent: { xs: 'center', lg: 'flex-end' },
+        p: '20px  0 30px 0',
       }}
     >
       <Pagination
@@ -30,16 +29,16 @@ const BookPagination: React.FC<IBookPaginationProps> = ({ pages, page }) => {
         renderItem={(item) => (
           <PaginationItem
             sx={{
-              "&:active": {
+              '&:active': {
                 backgroundColor: Colors.hover,
               },
-              "&.Mui-selected:hover": {
+              '&.Mui-selected:hover': {
                 backgroundColor: Colors.hover,
               },
-              "&.Mui-selected": {
+              '&.Mui-selected': {
                 backgroundColor: Colors.hover,
               },
-              "&:hover": {
+              '&:hover': {
                 backgroundColor: Colors.selected,
               },
             }}
