@@ -27,7 +27,7 @@ const SearchField: React.FC = () => {
         query: input.trim() || '',
       });
     }, 500);
-  }, [input, page, setSearchParams]);
+  }, [input, page, query, setSearchParams]);
 
   return (
     <Container
