@@ -6,6 +6,7 @@ import { useSearchParams } from 'react-router-dom';
 const SearchField: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query');
+  const page = searchParams.get('page');
   const [input, setInput] = useState(query?.trim() || '');
   const timer = useRef<any>();
 
@@ -17,12 +18,16 @@ const SearchField: React.FC = () => {
   useEffect(() => {
     clearTimeout(timer.current);
     timer.current = setTimeout(() => {
+      let startPage: string = page || '1';
+      if (query != input) {
+        startPage = '1';
+      }
       setSearchParams({
-        page: '1',
+        page: startPage,
         query: input.trim() || '',
       });
     }, 500);
-  }, [input, setSearchParams]);
+  }, [input, page, setSearchParams]);
 
   return (
     <Container

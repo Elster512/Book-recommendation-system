@@ -43,7 +43,7 @@ const BookPagination: React.FC<IBookPaginationProps> = ({ pages, page }) => {
               },
             }}
             component={Link}
-            to={`/?page=${item.page}${query && `&query=${query}`}`}
+            to={`/?page=${item.page}${`&query=${query}`}`}
             {...item}
           />
         )}
