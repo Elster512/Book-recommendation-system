@@ -243,7 +243,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
-cors = CORS(app)
+cors = CORS(app,resources={r'/*':{'origins':'http://localhost:3000'}})
 app.config['CORS_HEADERS'] = 'Content-Type'
 
 
@@ -305,7 +305,7 @@ def reccomendation_for_book():
 
 
 @app.route('/rec_user')
-@cross_origin(origin='*',supports_credentials=True)
+@cross_origin()
 def reccomendation_for_user():
     userID = random.randint(0,len(list_of_distinct_users))
     if not int(list_of_distinct_users[userID]) in list_of_distinct_users:
