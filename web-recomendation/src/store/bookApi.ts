@@ -9,6 +9,9 @@ export const booksApi = createApi({
     baseUrl: BASE_URL,
     credentials: "same-origin",
     mode: "cors",
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+    },
   }),
   tagTypes: ["Books", "Book", "Rec", "User"],
   endpoints: (builder) => ({
