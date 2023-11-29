@@ -1,0 +1,16 @@
+version: "3"
+services:
+  back:
+    image: back
+    volumes:
+      - "data:/app/data"
+    ports:
+      - 8008:8008
+  front:
+    depends_on:
+      - back
+    image: book-life-app
+    ports:
+      - 3000:3000
+volumes:
+  data:

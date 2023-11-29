@@ -2,12 +2,13 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { Book } from "../types/bookcard";
 import { Query } from "../types/query";
 
-const BASE_URL = "https://localhost:8008/";
+const BASE_URL = "http://localhost:8008/";
 export const booksApi = createApi({
   reducerPath: "booksApi",
   baseQuery: fetchBaseQuery({
     baseUrl: BASE_URL,
     credentials: "same-origin",
+    mode: "cors",
   }),
   tagTypes: ["Books", "Book", "Rec", "User"],
   endpoints: (builder) => ({
