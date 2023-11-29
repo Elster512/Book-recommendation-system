@@ -8,6 +8,7 @@ services:
       - 8000:8000
     restart: always
     tty: true
+    detach: true
   front:
     depends_on:
       - back
@@ -15,5 +16,6 @@ services:
     ports:
       - 3000:3000
     tty: true
+    detach: true
 volumes:
   data:
