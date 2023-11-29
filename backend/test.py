@@ -254,7 +254,7 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 def hello_world():
     return 'Hello, World!'
 
-@app.route('/books')
+@app.route('/api/books')
 @cross_origin()
 def books():
     page = request.args.get('page')
@@ -277,7 +277,7 @@ def books():
 
 
 
-@app.route('/books/<id>')
+@app.route('/api/books/<id>')
 @cross_origin()
 def get_one_book(id):
     book = sampleBooks[sampleBooks.ISBN == str(id)].to_dict('records')
@@ -288,7 +288,7 @@ def get_one_book(id):
 
 
 
-@app.route('/rec_book')
+@app.route('/api/rec_book')
 @cross_origin()
 def reccomendation_for_book():
     ISBN = request.args.get('title')
@@ -304,7 +304,7 @@ def reccomendation_for_book():
     return jsonify({'rec_books':recBooks,'status':200}),200
 
 
-@app.route('/rec_user')
+@app.route('/api/rec_user')
 @cross_origin()
 def reccomendation_for_user():
     userID = random.randint(0,len(list_of_distinct_users))
