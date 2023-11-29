@@ -243,7 +243,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
-cors = CORS(app,resources={r'/*':{'origins':'http://localhost:3000'}})
+cors = CORS(app,resources={r'/*':{'origins':'*'}})
 app.config['CORS_HEADERS'] = 'Content-Type'
 
 
