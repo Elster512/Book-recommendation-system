@@ -243,7 +243,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
-cors = CORS(app,supports_credentials=True)
+cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
 
@@ -255,7 +255,7 @@ def hello_world():
     return 'Hello, World!'
 
 @app.route('/books')
-@cross_origin(origin='*',supports_credentials=True)
+@cross_origin()
 def books():
     page = request.args.get('page')
     query = request.args.get('query')
@@ -278,7 +278,7 @@ def books():
 
 
 @app.route('/books/<id>')
-@cross_origin(origin='*',supports_credentials=True)
+@cross_origin()
 def get_one_book(id):
     book = sampleBooks[sampleBooks.ISBN == str(id)].to_dict('records')
     if not book:
@@ -289,7 +289,7 @@ def get_one_book(id):
 
 
 @app.route('/rec_book')
-@cross_origin(origin='*',supports_credentials=True)
+@cross_origin()
 def reccomendation_for_book():
     ISBN = request.args.get('title')
     book =sampleBooks[sampleBooks.ISBN == str(ISBN)].to_dict('records')
@@ -315,11 +315,6 @@ def reccomendation_for_user():
    
     return jsonify({'rec_books':recBooks}),200
 
-@app.after_request
-def add_headers(response):
-    response.headers.add('Content-Type', 'application/json')
-    response.headers.add('Access-Control-Allow-Origin', '*')
-    return response
 
 # %%
 
