@@ -6,6 +6,7 @@ services:
       - "data:/app/data"
     ports:
       - 8000:8000
+    restart: always
   front:
     depends_on:
       - back
