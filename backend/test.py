@@ -317,7 +317,9 @@ def reccomendation_for_user():
 
 @app.after_request
 def add_headers(response):
+    response.headers.add('Content-Type', 'application/json')
     response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
 
 # %%
 
