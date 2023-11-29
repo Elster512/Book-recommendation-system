@@ -315,6 +315,10 @@ def reccomendation_for_user():
    
     return jsonify({'rec_books':recBooks}),200
 
+@app.after_request
+def add_headers(response):
+    response.headers.add('Access-Control-Allow-Origin', '*')
+
 # %%
 
 if __name__ == '__main__':
