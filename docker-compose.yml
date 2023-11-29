@@ -7,11 +7,13 @@ services:
     ports:
       - 8000:8000
     restart: always
+    tty: true
   front:
     depends_on:
       - back
     image: elster512/bookapifront
     ports:
       - 3000:3000
+    tty: true
 volumes:
   data:
